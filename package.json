@@ -4,7 +4,7 @@
   "description": "A template engine with experimentation",
   "main": "lib/bonzer.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node_modules/rollup/bin/rollup --format=cjs --output=lib/bonzer.js -- src/index.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/henryluki/bonzer/issues"
   },
-  "homepage": "https://github.com/henryluki/bonzer#readme"
+  "homepage": "https://github.com/henryluki/bonzer#readme",
+  "devDependencies": {
+    "rollup": "^0.45.2"
+  }
 }
