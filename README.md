@@ -66,20 +66,40 @@ output:
 
 ### Workflow
 
+Whole:
+
 ```
-             Tokenizer   Parser
-template  =>  tokens  =>  AST  =>  compile  => html
+             Tokenizer   Parser            data
+template  =>  tokens  =>  AST  =>  compile  => output
+
+```
+Precompoile:
+
+```
+            Tokenizer       Parser
+template  =>  tokens  =>  parse  => AST
 ```
 
 ### Tokenizer
 
 Convert string to tokens
 
+- Token types:
+
+```
+"CONDITION_START"
+"CONDITION_END"
+"LOOP_START"
+"LOOP_END"
+"VARIABLE"
+"TEXT"
+```
+
 ### Parser
 
 Convet tokens to AST tree
 
-- Tree node and leaf:
+- Node and Leaf:
 
 ```
    node: { name, type, variable, children }
@@ -90,12 +110,14 @@ Convet tokens to AST tree
 - Abstract syntax tree:
 
 ```
-         ROOT
-          /
-      CONDITION
-        /  \
-      LOOP  CONDITION
-    /           /
-CONDITION     LOOP
+               root
+               /
+            condition
+          /          \
+       loop        condition
+     /     \           /  \
+condition variable  loop  text
+                    /
+                  text
 ```
 
