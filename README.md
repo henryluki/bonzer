@@ -1,7 +1,10 @@
 # bonzer
+***
+
 A template engine with experimentation
 
 # syntax
+***
 
 - Variable
 
@@ -16,6 +19,7 @@ A template engine with experimentation
 `{each} {/each}`
 
 # Example
+***
 
 Install:
 
@@ -25,6 +29,7 @@ yarn add bonzer
 
 Usage:
 
+template:
 ```html
 {if data.sold}
 <div>
@@ -37,7 +42,7 @@ Usage:
 </div>
 {/if}
 ```
-
+javascript:
 ```javascript
 
 var data = {
@@ -63,10 +68,11 @@ output:
 ```
 
 # Structure
+***
 
 ### Workflow
 
-Whole:
+Overview:
 
 ```
              Tokenizer   Parser            data
@@ -97,27 +103,38 @@ Convert string to tokens
 
 ### Parser
 
-Convet tokens to AST tree
+Convet tokens to a parse tree
 
 - Node and Leaf:
 
-```
-   node: { name, type, variable, children }
+A node which has children calls `Node`.
+A node which has no children calls `Leaf`.
 
-   leaf: { name, type, (text or variable) }
+They may look like:
+```
+  Node: { name, type, variable, children }
+
+  Leaf: { name, type, (text or variable) }
 ```
 
-- Abstract syntax tree:
+- Parse Tree:
 
+A tree is built by multiple nodes because of hierarchical relationships.
+
+It may like this:
 ```
-               root
-               /
-            condition
-          /          \
-       loop        condition
-     /     \           /  \
-condition variable  loop  text
+                root
+                /
+             condition
+          /             \
+       loop         condition
+     /     \           /  \   \
+condition variable  loop  text variable
                     /
                   text
 ```
 
+### Compile
+
+The parse tree run `compile` function with data (context). It's a depth-first traversal.
+Every `Node` (`Leaf`) run it's `compile` function then parent merge children's compiled results.
