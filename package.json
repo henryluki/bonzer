@@ -4,7 +4,8 @@
   "description": "A template engine with experimentation",
   "main": "lib/bonzer.js",
   "scripts": {
-    "build": "node_modules/rollup/bin/rollup --format=cjs --output=lib/bonzer.js -- src/index.js"
+    "build": "node_modules/rollup/bin/rollup -c",
+    "watch": "node_modules/rollup/bin/rollup -c -w"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/henryluki/bonzer#readme",
   "devDependencies": {
-    "rollup": "^0.45.2"
+    "rollup": "^0.45.2",
+    "rollup-watch": "^4.3.1"
   }
 }
