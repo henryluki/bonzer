@@ -2,8 +2,8 @@ import * as constants from '../constants'
 import * as nodes from './nodes'
 
 export default (tokens) => {
-  let root = new nodes.RootNode
-  let collection = new nodes.NodeCollection(root)
+  const root = new nodes.RootNode
+  const collection = new nodes.NodeCollection(root)
   let index = 0
 
   while(index < tokens.length){

@@ -3,7 +3,7 @@ import * as tokenizer from './tokenizer'
 import { isStartWith } from './utils'
 
 export default (tpl) => {
-  let tokens = []
+  const tokens = []
 
   while (tpl) {
     if (isStartWith(tpl, constants.CONDITION_START)) {
