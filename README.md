@@ -83,7 +83,7 @@ Precompoile:
 
 ```
             Tokenizer       Parser
-template  =>  tokens  =>  parse  => AST
+template  =>  tokens  =>  parse  => parse tree
 ```
 
 ### Tokenizer
